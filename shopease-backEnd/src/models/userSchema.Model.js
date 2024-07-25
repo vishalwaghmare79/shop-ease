@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
       required: true,
       minlength: 8,
     },
+    phone: {
+      type: String,
+      trim: true,
+    },
     address: {
       street: String,
       city: String,
@@ -25,9 +29,9 @@ const userSchema = new mongoose.Schema({
       zip: String,
       country: String,
     },
-    phone: {
-      type: String,
-      trim: true,
+    role: {
+      type: Number,
+      default: 0
     }
   }, {timestamps: true} );
 
