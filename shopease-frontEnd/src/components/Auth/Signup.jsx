@@ -4,17 +4,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  // State variables to store form input values
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
+  // Hook to programmatically navigate between routes
   const navigate = useNavigate();
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent the default form submission behavior
     try {
+      // Send a POST request to the signup endpoint
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/users/signup`,
         {
@@ -26,86 +30,91 @@ const Signup = () => {
         }
       );
       if (res.data.success) {
+        // If signup is successful, show a success message and navigate to Sign In
         toast.success(res.data.message);
-        navigate("/signin");
+        navigate("/Signin");
       } else {
+        // If signup fails, show an error message
         toast.error(res.data.message);
       }
     } catch (error) {
+      // Handle unexpected errors
       console.error(error);
       toast.error("Something went wrong");
     }
   };
 
   return (
-    <div className="form">
-      <h1 className="form-title">Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="input-div">
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-input"
-            placeholder="Name"
-            required
-          />
-        </div>
-        <div className="input-div">
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-input"
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div className="input-div">
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-input"
-            placeholder="Password"
-            required
-          />
-        </div>
-        <div className="input-div">
-          <input
-            type="tel"
-            id="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className="form-input"
-            placeholder="Phone"
-            required
-          />
-        </div>
-        <div className="input-div">
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="form-input"
-            placeholder="Address"
-            required
-          />
-        </div>
-        <button type="submit" className="form-button">
-          Sign Up
-        </button>
-        <p className="form-link">
-          Already have an account?{" "}
-          <span onClick={() => navigate("/loginpage")} className="form-btn">
-            <strong>Sign in</strong>
-          </span>
-        </p>
-      </form>
+    <div className='auth-page'>
+      <div className="form">
+        <h1 className="form-title">Sign Up</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="input-div">
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="form-input"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div className="input-div">
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="form-input"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="input-div">
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="form-input"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className="input-div">
+            <input
+              type="tel"
+              id="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="form-input"
+              placeholder="Phone"
+              required
+            />
+          </div>
+          <div className="input-div">
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="form-input"
+              placeholder="Address"
+              required
+            />
+          </div>
+          <button type="submit" className="form-button">
+            Sign Up
+          </button>
+          <p className="form-link">
+            Already have an account?{" "}
+            <span onClick={() => navigate("/Signin")} className="form-btn">
+              <strong>Sign in</strong>
+            </span>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };

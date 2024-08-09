@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { ToastContainer } from "react-toastify";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Common/Header";
 import Footer from "./components/Common/Footer";
-import { ToastContainer } from "react-toastify";
+import Signin from "./components/Auth/Signin";
+import Signup from "./components/Auth/Signup";
 import "react-toastify/dist/ReactToastify.css";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
+import "./App.css";
+
 
 function App() {
   return (
@@ -18,8 +19,8 @@ function App() {
         <ToastContainer />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/registerpage" element={<RegisterPage />} />
-          <Route path="/loginpage" element={<LoginPage />} />
+          <Route path="/Signin" element={<Signin />} />
+          <Route path="/Signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

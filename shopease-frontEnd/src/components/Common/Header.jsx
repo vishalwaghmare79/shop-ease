@@ -25,8 +25,8 @@ function Header() {
       <div>
         <ul className="item-link">
           <li>
-            <NavLink to="/registerpage">Sign Up</NavLink>/
-            <NavLink to="/loginpage">Sign In</NavLink>
+            <NavLink to="/Signup">Sign Up</NavLink>/
+            <NavLink to="/Signin">Sign In</NavLink>
           </li>
           <li>
             <NavLink to="/wishlist">
